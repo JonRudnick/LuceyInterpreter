@@ -1,0 +1,136 @@
+open AST;
+
+      
+%%
+%name LuceyInterpret (* LuceyInterpret becomes a prefix in functions *)
+%verbose
+%eop EOF
+%pos int
+%nodefault
+%pure (* no side-effects in actions *)
+
+%term EOF
+    | LPAREN
+    | RPAREN
+    | PLUS
+    | MINUS
+    | TIMES
+    | DIVIDE
+    | MOD
+    | LESSTHAN
+    | IntLit of int
+    | TRUE
+    | FALSE
+    | Identifier of string
+    | SEMICOLON
+    | LBRACE
+    | RBRACE
+    | SETEQ
+    | IF
+    | ELSE
+    | WHILE
+    | INT_KW
+    | BOOL_KW
+    | MORETHAN
+    | ANDAND
+    | EITHEROR
+    | EQUALEQUAL
+    | NOTEQUAL
+    | LESSEQUAL
+    | GREATEQUAL
+    | FACTORIAL
+
+%nonterm Program of StmtAST
+       | StatementList of StmtAST list
+       | Statement of StmtAST
+       | BlockStatement of StmtAST
+       | AssignmentStatement of StmtAST
+       | IfStatement of StmtAST
+       | IfElseStatement of StmtAST
+       | WhileStatement of StmtAST
+       | DeclarationStatement of StmtAST
+       | DeclarationAssignment of StmtAST
+       | Type of string
+       | Expression of ExprAST
+       | Conjunction of ExprAST
+       | Equality of ExprAST
+       | Relation of ExprAST
+       | Addition of ExprAST
+       | Term of ExprAST
+       | Factor of ExprAST
+       | Primary of ExprAST
+       | Literal of ExprAST
+
+
+
+%%
+
+Program : StatementList EOF                                              (Block StatementList)
+
+StatementList : Statement StatementList                                  (Statement::StatementList)
+              | Statement                                                ([Statement])
+
+Statement : SEMICOLON                                                    (Skip)
+          | BlockStatement                                               (BlockStatement)
+          | AssignmentStatement                                          (AssignmentStatement)
+          | IfStatement                                                  (IfStatement)
+          | IfElseStatement                                              (IfElseStatement)
+          | WhileStatement                                               (WhileStatement)
+          | DeclarationStatement                                         (DeclarationStatement)
+          | DeclarationAssignment                                        (DeclarationAssignment)
+
+BlockStatement : LBRACE StatementList RBRACE                             (Block StatementList)
+
+AssignmentStatement : Identifier SETEQ Expression SEMICOLON              (Assignment (Identifier, Expression))
+
+IfStatement : IF LPAREN Expression RPAREN Statement                      (If (Expression,Statement))
+
+IfElseStatement : IF LPAREN Expression RPAREN Statement ELSE Statement   (IfElse (Expression,Statement1,Statement2))
+
+WhileStatement : WHILE LPAREN Expression RPAREN Statement                (Loop (Expression, Statement))
+
+DeclarationStatement : Type Identifier SEMICOLON                         (Decl (Type, Identifier))
+
+DeclarationAssignment : Type Identifier SETEQ Expression SEMICOLON       (Dec2 (Type, Identifier, Expression))
+
+Type : INT_KW                          ("int")
+     | BOOL_KW                         ("bool")
+
+
+Expression : Expression EITHEROR Conjunction    (Binary ("||",Expression,Conjunction))
+           | Conjunction                        (Conjunction)        
+
+Conjunction : Conjunction ANDAND Equality       (Binary ("&&",Conjunction,Equality))
+            | Equality                          (Equality)
+
+Equality : Relation EQUALEQUAL Relation         (Binary ("==",Relation1,Relation2))
+         | Relation NOTEQUAL Relation           (Binary ("!=",Relation1,Relation2))
+         | Relation                             (Relation)
+
+Relation : Addition LESSTHAN Addition           (Binary ("<",Addition1,Addition2))
+         | Addition LESSEQUAL Addition          (Binary ("<=",Addition1,Addition2))
+         | Addition MORETHAN Addition           (Binary (">",Addition1,Addition2))
+         | Addition GREATEQUAL Addition         (Binary (">=",Addition1,Addition2))
+         | Addition                             (Addition)
+
+Addition : Addition MINUS Term                  (Binary ("-",Addition,Term))
+           | Addition PLUS Term                 (Binary ("+",Addition,Term))
+           | Term                               (Term)
+
+Term : Term TIMES Factor                        (Binary ("*",Term,Factor))
+     | Term DIVIDE Factor                       (Binary ("/",Term,Factor))
+     | Term MOD Factor                          (Binary ("%",Term,Factor))
+     | Factor                                   (Factor)
+
+Factor : MINUS Factor                           (Unary ("-",Factor))
+       | FACTORIAL Factor                       (Unary ("!",Factor))
+       | Primary                                (Primary)
+
+Primary : Literal                               (Literal)
+        | Identifier                            (Var Identifier)
+        | LPAREN Expression RPAREN              (Expression)
+
+Literal : IntLit                                (Lit (Intval IntLit))
+        | TRUE                                  (Lit (Boolval true))
+        | FALSE                                 (Lit (Boolval false))
+

@@ -1,0 +1,1664 @@
+1 shift/reduce conflict
+
+error:  state 82: shift/reduce conflict (shift ELSE, reduce by rule 13)
+
+state 0:
+
+	Program : . StatementList EOF 
+
+	Identifier	shift 17
+	SEMICOLON	shift 16
+	LBRACE	shift 15
+	IF	shift 14
+	WHILE	shift 13
+	INT_KW	shift 12
+	BOOL_KW	shift 11
+
+	Program	goto 85
+	StatementList	goto 10
+	Statement	goto 9
+	BlockStatement	goto 8
+	AssignmentStatement	goto 7
+	IfStatement	goto 6
+	IfElseStatement	goto 5
+	WhileStatement	goto 4
+	DeclarationStatement	goto 3
+	DeclarationAssignment	goto 2
+	Type	goto 1
+
+	.	error
+
+
+state 1:
+
+	DeclarationStatement : Type . Identifier SEMICOLON 
+	DeclarationAssignment : Type . Identifier SETEQ Expression SEMICOLON 
+
+	Identifier	shift 18
+
+
+	.	error
+
+
+state 2:
+
+	Statement : DeclarationAssignment .  (reduce by rule 10)
+
+	EOF	reduce by rule 10
+	Identifier	reduce by rule 10
+	SEMICOLON	reduce by rule 10
+	LBRACE	reduce by rule 10
+	RBRACE	reduce by rule 10
+	IF	reduce by rule 10
+	ELSE	reduce by rule 10
+	WHILE	reduce by rule 10
+	INT_KW	reduce by rule 10
+	BOOL_KW	reduce by rule 10
+
+
+	.	error
+
+
+state 3:
+
+	Statement : DeclarationStatement .  (reduce by rule 9)
+
+	EOF	reduce by rule 9
+	Identifier	reduce by rule 9
+	SEMICOLON	reduce by rule 9
+	LBRACE	reduce by rule 9
+	RBRACE	reduce by rule 9
+	IF	reduce by rule 9
+	ELSE	reduce by rule 9
+	WHILE	reduce by rule 9
+	INT_KW	reduce by rule 9
+	BOOL_KW	reduce by rule 9
+
+
+	.	error
+
+
+state 4:
+
+	Statement : WhileStatement .  (reduce by rule 8)
+
+	EOF	reduce by rule 8
+	Identifier	reduce by rule 8
+	SEMICOLON	reduce by rule 8
+	LBRACE	reduce by rule 8
+	RBRACE	reduce by rule 8
+	IF	reduce by rule 8
+	ELSE	reduce by rule 8
+	WHILE	reduce by rule 8
+	INT_KW	reduce by rule 8
+	BOOL_KW	reduce by rule 8
+
+
+	.	error
+
+
+state 5:
+
+	Statement : IfElseStatement .  (reduce by rule 7)
+
+	EOF	reduce by rule 7
+	Identifier	reduce by rule 7
+	SEMICOLON	reduce by rule 7
+	LBRACE	reduce by rule 7
+	RBRACE	reduce by rule 7
+	IF	reduce by rule 7
+	ELSE	reduce by rule 7
+	WHILE	reduce by rule 7
+	INT_KW	reduce by rule 7
+	BOOL_KW	reduce by rule 7
+
+
+	.	error
+
+
+state 6:
+
+	Statement : IfStatement .  (reduce by rule 6)
+
+	EOF	reduce by rule 6
+	Identifier	reduce by rule 6
+	SEMICOLON	reduce by rule 6
+	LBRACE	reduce by rule 6
+	RBRACE	reduce by rule 6
+	IF	reduce by rule 6
+	ELSE	reduce by rule 6
+	WHILE	reduce by rule 6
+	INT_KW	reduce by rule 6
+	BOOL_KW	reduce by rule 6
+
+
+	.	error
+
+
+state 7:
+
+	Statement : AssignmentStatement .  (reduce by rule 5)
+
+	EOF	reduce by rule 5
+	Identifier	reduce by rule 5
+	SEMICOLON	reduce by rule 5
+	LBRACE	reduce by rule 5
+	RBRACE	reduce by rule 5
+	IF	reduce by rule 5
+	ELSE	reduce by rule 5
+	WHILE	reduce by rule 5
+	INT_KW	reduce by rule 5
+	BOOL_KW	reduce by rule 5
+
+
+	.	error
+
+
+state 8:
+
+	Statement : BlockStatement .  (reduce by rule 4)
+
+	EOF	reduce by rule 4
+	Identifier	reduce by rule 4
+	SEMICOLON	reduce by rule 4
+	LBRACE	reduce by rule 4
+	RBRACE	reduce by rule 4
+	IF	reduce by rule 4
+	ELSE	reduce by rule 4
+	WHILE	reduce by rule 4
+	INT_KW	reduce by rule 4
+	BOOL_KW	reduce by rule 4
+
+
+	.	error
+
+
+state 9:
+
+	StatementList : Statement . StatementList 
+	StatementList : Statement .  (reduce by rule 2)
+
+	EOF	reduce by rule 2
+	Identifier	shift 17
+	SEMICOLON	shift 16
+	LBRACE	shift 15
+	RBRACE	reduce by rule 2
+	IF	shift 14
+	WHILE	shift 13
+	INT_KW	shift 12
+	BOOL_KW	shift 11
+
+	StatementList	goto 19
+	Statement	goto 9
+	BlockStatement	goto 8
+	AssignmentStatement	goto 7
+	IfStatement	goto 6
+	IfElseStatement	goto 5
+	WhileStatement	goto 4
+	DeclarationStatement	goto 3
+	DeclarationAssignment	goto 2
+	Type	goto 1
+
+	.	error
+
+
+state 10:
+
+	Program : StatementList . EOF 
+
+	EOF	shift 20
+
+
+	.	error
+
+
+state 11:
+
+	Type : BOOL_KW .  (reduce by rule 19)
+
+	Identifier	reduce by rule 19
+
+
+	.	error
+
+
+state 12:
+
+	Type : INT_KW .  (reduce by rule 18)
+
+	Identifier	reduce by rule 18
+
+
+	.	error
+
+
+state 13:
+
+	WhileStatement : WHILE . LPAREN Expression RPAREN Statement 
+
+	LPAREN	shift 21
+
+
+	.	error
+
+
+state 14:
+
+	IfStatement : IF . LPAREN Expression RPAREN Statement 
+	IfElseStatement : IF . LPAREN Expression RPAREN Statement ELSE Statement 
+
+	LPAREN	shift 22
+
+
+	.	error
+
+
+state 15:
+
+	BlockStatement : LBRACE . StatementList RBRACE 
+
+	Identifier	shift 17
+	SEMICOLON	shift 16
+	LBRACE	shift 15
+	IF	shift 14
+	WHILE	shift 13
+	INT_KW	shift 12
+	BOOL_KW	shift 11
+
+	StatementList	goto 23
+	Statement	goto 9
+	BlockStatement	goto 8
+	AssignmentStatement	goto 7
+	IfStatement	goto 6
+	IfElseStatement	goto 5
+	WhileStatement	goto 4
+	DeclarationStatement	goto 3
+	DeclarationAssignment	goto 2
+	Type	goto 1
+
+	.	error
+
+
+state 16:
+
+	Statement : SEMICOLON .  (reduce by rule 3)
+
+	EOF	reduce by rule 3
+	Identifier	reduce by rule 3
+	SEMICOLON	reduce by rule 3
+	LBRACE	reduce by rule 3
+	RBRACE	reduce by rule 3
+	IF	reduce by rule 3
+	ELSE	reduce by rule 3
+	WHILE	reduce by rule 3
+	INT_KW	reduce by rule 3
+	BOOL_KW	reduce by rule 3
+
+
+	.	error
+
+
+state 17:
+
+	AssignmentStatement : Identifier . SETEQ Expression SEMICOLON 
+
+	SETEQ	shift 24
+
+
+	.	error
+
+
+state 18:
+
+	DeclarationStatement : Type Identifier . SEMICOLON 
+	DeclarationAssignment : Type Identifier . SETEQ Expression SEMICOLON 
+
+	SEMICOLON	shift 26
+	SETEQ	shift 25
+
+
+	.	error
+
+
+state 19:
+
+	StatementList : Statement StatementList .  (reduce by rule 1)
+
+	EOF	reduce by rule 1
+	RBRACE	reduce by rule 1
+
+
+	.	error
+
+
+state 20:
+
+	Program : StatementList EOF .  (reduce by rule 0)
+
+	EOF	reduce by rule 0
+
+
+	.	error
+
+
+state 21:
+
+	WhileStatement : WHILE LPAREN . Expression RPAREN Statement 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Expression	goto 35
+	Conjunction	goto 34
+	Equality	goto 33
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 22:
+
+	IfStatement : IF LPAREN . Expression RPAREN Statement 
+	IfElseStatement : IF LPAREN . Expression RPAREN Statement ELSE Statement 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Expression	goto 43
+	Conjunction	goto 34
+	Equality	goto 33
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 23:
+
+	BlockStatement : LBRACE StatementList . RBRACE 
+
+	RBRACE	shift 44
+
+
+	.	error
+
+
+state 24:
+
+	AssignmentStatement : Identifier SETEQ . Expression SEMICOLON 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Expression	goto 45
+	Conjunction	goto 34
+	Equality	goto 33
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 25:
+
+	DeclarationAssignment : Type Identifier SETEQ . Expression SEMICOLON 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Expression	goto 46
+	Conjunction	goto 34
+	Equality	goto 33
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 26:
+
+	DeclarationStatement : Type Identifier SEMICOLON .  (reduce by rule 16)
+
+	EOF	reduce by rule 16
+	Identifier	reduce by rule 16
+	SEMICOLON	reduce by rule 16
+	LBRACE	reduce by rule 16
+	RBRACE	reduce by rule 16
+	IF	reduce by rule 16
+	ELSE	reduce by rule 16
+	WHILE	reduce by rule 16
+	INT_KW	reduce by rule 16
+	BOOL_KW	reduce by rule 16
+
+
+	.	error
+
+
+state 27:
+
+	Primary : Literal .  (reduce by rule 42)
+
+	RPAREN	reduce by rule 42
+	PLUS	reduce by rule 42
+	MINUS	reduce by rule 42
+	TIMES	reduce by rule 42
+	DIVIDE	reduce by rule 42
+	MOD	reduce by rule 42
+	LESSTHAN	reduce by rule 42
+	SEMICOLON	reduce by rule 42
+	MORETHAN	reduce by rule 42
+	ANDAND	reduce by rule 42
+	EITHEROR	reduce by rule 42
+	EQUALEQUAL	reduce by rule 42
+	NOTEQUAL	reduce by rule 42
+	LESSEQUAL	reduce by rule 42
+	GREATEQUAL	reduce by rule 42
+
+
+	.	error
+
+
+state 28:
+
+	Factor : Primary .  (reduce by rule 41)
+
+	RPAREN	reduce by rule 41
+	PLUS	reduce by rule 41
+	MINUS	reduce by rule 41
+	TIMES	reduce by rule 41
+	DIVIDE	reduce by rule 41
+	MOD	reduce by rule 41
+	LESSTHAN	reduce by rule 41
+	SEMICOLON	reduce by rule 41
+	MORETHAN	reduce by rule 41
+	ANDAND	reduce by rule 41
+	EITHEROR	reduce by rule 41
+	EQUALEQUAL	reduce by rule 41
+	NOTEQUAL	reduce by rule 41
+	LESSEQUAL	reduce by rule 41
+	GREATEQUAL	reduce by rule 41
+
+
+	.	error
+
+
+state 29:
+
+	Term : Factor .  (reduce by rule 38)
+
+	RPAREN	reduce by rule 38
+	PLUS	reduce by rule 38
+	MINUS	reduce by rule 38
+	TIMES	reduce by rule 38
+	DIVIDE	reduce by rule 38
+	MOD	reduce by rule 38
+	LESSTHAN	reduce by rule 38
+	SEMICOLON	reduce by rule 38
+	MORETHAN	reduce by rule 38
+	ANDAND	reduce by rule 38
+	EITHEROR	reduce by rule 38
+	EQUALEQUAL	reduce by rule 38
+	NOTEQUAL	reduce by rule 38
+	LESSEQUAL	reduce by rule 38
+	GREATEQUAL	reduce by rule 38
+
+
+	.	error
+
+
+state 30:
+
+	Addition : Term .  (reduce by rule 34)
+	Term : Term . TIMES Factor 
+	Term : Term . DIVIDE Factor 
+	Term : Term . MOD Factor 
+
+	RPAREN	reduce by rule 34
+	PLUS	reduce by rule 34
+	MINUS	reduce by rule 34
+	TIMES	shift 49
+	DIVIDE	shift 48
+	MOD	shift 47
+	LESSTHAN	reduce by rule 34
+	SEMICOLON	reduce by rule 34
+	MORETHAN	reduce by rule 34
+	ANDAND	reduce by rule 34
+	EITHEROR	reduce by rule 34
+	EQUALEQUAL	reduce by rule 34
+	NOTEQUAL	reduce by rule 34
+	LESSEQUAL	reduce by rule 34
+	GREATEQUAL	reduce by rule 34
+
+
+	.	error
+
+
+state 31:
+
+	Relation : Addition . LESSTHAN Addition 
+	Relation : Addition . LESSEQUAL Addition 
+	Relation : Addition . MORETHAN Addition 
+	Relation : Addition . GREATEQUAL Addition 
+	Relation : Addition .  (reduce by rule 31)
+	Addition : Addition . MINUS Term 
+	Addition : Addition . PLUS Term 
+
+	RPAREN	reduce by rule 31
+	PLUS	shift 55
+	MINUS	shift 54
+	LESSTHAN	shift 53
+	SEMICOLON	reduce by rule 31
+	MORETHAN	shift 52
+	ANDAND	reduce by rule 31
+	EITHEROR	reduce by rule 31
+	EQUALEQUAL	reduce by rule 31
+	NOTEQUAL	reduce by rule 31
+	LESSEQUAL	shift 51
+	GREATEQUAL	shift 50
+
+
+	.	error
+
+
+state 32:
+
+	Equality : Relation . EQUALEQUAL Relation 
+	Equality : Relation . NOTEQUAL Relation 
+	Equality : Relation .  (reduce by rule 26)
+
+	RPAREN	reduce by rule 26
+	SEMICOLON	reduce by rule 26
+	ANDAND	reduce by rule 26
+	EITHEROR	reduce by rule 26
+	EQUALEQUAL	shift 57
+	NOTEQUAL	shift 56
+
+
+	.	error
+
+
+state 33:
+
+	Conjunction : Equality .  (reduce by rule 23)
+
+	RPAREN	reduce by rule 23
+	SEMICOLON	reduce by rule 23
+	ANDAND	reduce by rule 23
+	EITHEROR	reduce by rule 23
+
+
+	.	error
+
+
+state 34:
+
+	Expression : Conjunction .  (reduce by rule 21)
+	Conjunction : Conjunction . ANDAND Equality 
+
+	RPAREN	reduce by rule 21
+	SEMICOLON	reduce by rule 21
+	ANDAND	shift 58
+	EITHEROR	reduce by rule 21
+
+
+	.	error
+
+
+state 35:
+
+	WhileStatement : WHILE LPAREN Expression . RPAREN Statement 
+	Expression : Expression . EITHEROR Conjunction 
+
+	RPAREN	shift 60
+	EITHEROR	shift 59
+
+
+	.	error
+
+
+state 36:
+
+	Factor : FACTORIAL . Factor 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Factor	goto 61
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 37:
+
+	Primary : Identifier .  (reduce by rule 43)
+
+	RPAREN	reduce by rule 43
+	PLUS	reduce by rule 43
+	MINUS	reduce by rule 43
+	TIMES	reduce by rule 43
+	DIVIDE	reduce by rule 43
+	MOD	reduce by rule 43
+	LESSTHAN	reduce by rule 43
+	SEMICOLON	reduce by rule 43
+	MORETHAN	reduce by rule 43
+	ANDAND	reduce by rule 43
+	EITHEROR	reduce by rule 43
+	EQUALEQUAL	reduce by rule 43
+	NOTEQUAL	reduce by rule 43
+	LESSEQUAL	reduce by rule 43
+	GREATEQUAL	reduce by rule 43
+
+
+	.	error
+
+
+state 38:
+
+	Literal : FALSE .  (reduce by rule 47)
+
+	RPAREN	reduce by rule 47
+	PLUS	reduce by rule 47
+	MINUS	reduce by rule 47
+	TIMES	reduce by rule 47
+	DIVIDE	reduce by rule 47
+	MOD	reduce by rule 47
+	LESSTHAN	reduce by rule 47
+	SEMICOLON	reduce by rule 47
+	MORETHAN	reduce by rule 47
+	ANDAND	reduce by rule 47
+	EITHEROR	reduce by rule 47
+	EQUALEQUAL	reduce by rule 47
+	NOTEQUAL	reduce by rule 47
+	LESSEQUAL	reduce by rule 47
+	GREATEQUAL	reduce by rule 47
+
+
+	.	error
+
+
+state 39:
+
+	Literal : TRUE .  (reduce by rule 46)
+
+	RPAREN	reduce by rule 46
+	PLUS	reduce by rule 46
+	MINUS	reduce by rule 46
+	TIMES	reduce by rule 46
+	DIVIDE	reduce by rule 46
+	MOD	reduce by rule 46
+	LESSTHAN	reduce by rule 46
+	SEMICOLON	reduce by rule 46
+	MORETHAN	reduce by rule 46
+	ANDAND	reduce by rule 46
+	EITHEROR	reduce by rule 46
+	EQUALEQUAL	reduce by rule 46
+	NOTEQUAL	reduce by rule 46
+	LESSEQUAL	reduce by rule 46
+	GREATEQUAL	reduce by rule 46
+
+
+	.	error
+
+
+state 40:
+
+	Literal : IntLit .  (reduce by rule 45)
+
+	RPAREN	reduce by rule 45
+	PLUS	reduce by rule 45
+	MINUS	reduce by rule 45
+	TIMES	reduce by rule 45
+	DIVIDE	reduce by rule 45
+	MOD	reduce by rule 45
+	LESSTHAN	reduce by rule 45
+	SEMICOLON	reduce by rule 45
+	MORETHAN	reduce by rule 45
+	ANDAND	reduce by rule 45
+	EITHEROR	reduce by rule 45
+	EQUALEQUAL	reduce by rule 45
+	NOTEQUAL	reduce by rule 45
+	LESSEQUAL	reduce by rule 45
+	GREATEQUAL	reduce by rule 45
+
+
+	.	error
+
+
+state 41:
+
+	Factor : MINUS . Factor 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Factor	goto 62
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 42:
+
+	Primary : LPAREN . Expression RPAREN 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Expression	goto 63
+	Conjunction	goto 34
+	Equality	goto 33
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 43:
+
+	IfStatement : IF LPAREN Expression . RPAREN Statement 
+	IfElseStatement : IF LPAREN Expression . RPAREN Statement ELSE Statement 
+	Expression : Expression . EITHEROR Conjunction 
+
+	RPAREN	shift 64
+	EITHEROR	shift 59
+
+
+	.	error
+
+
+state 44:
+
+	BlockStatement : LBRACE StatementList RBRACE .  (reduce by rule 11)
+
+	EOF	reduce by rule 11
+	Identifier	reduce by rule 11
+	SEMICOLON	reduce by rule 11
+	LBRACE	reduce by rule 11
+	RBRACE	reduce by rule 11
+	IF	reduce by rule 11
+	ELSE	reduce by rule 11
+	WHILE	reduce by rule 11
+	INT_KW	reduce by rule 11
+	BOOL_KW	reduce by rule 11
+
+
+	.	error
+
+
+state 45:
+
+	AssignmentStatement : Identifier SETEQ Expression . SEMICOLON 
+	Expression : Expression . EITHEROR Conjunction 
+
+	SEMICOLON	shift 65
+	EITHEROR	shift 59
+
+
+	.	error
+
+
+state 46:
+
+	DeclarationAssignment : Type Identifier SETEQ Expression . SEMICOLON 
+	Expression : Expression . EITHEROR Conjunction 
+
+	SEMICOLON	shift 66
+	EITHEROR	shift 59
+
+
+	.	error
+
+
+state 47:
+
+	Term : Term MOD . Factor 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Factor	goto 67
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 48:
+
+	Term : Term DIVIDE . Factor 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Factor	goto 68
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 49:
+
+	Term : Term TIMES . Factor 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Factor	goto 69
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 50:
+
+	Relation : Addition GREATEQUAL . Addition 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Addition	goto 70
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 51:
+
+	Relation : Addition LESSEQUAL . Addition 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Addition	goto 71
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 52:
+
+	Relation : Addition MORETHAN . Addition 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Addition	goto 72
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 53:
+
+	Relation : Addition LESSTHAN . Addition 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Addition	goto 73
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 54:
+
+	Addition : Addition MINUS . Term 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Term	goto 74
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 55:
+
+	Addition : Addition PLUS . Term 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Term	goto 75
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 56:
+
+	Equality : Relation NOTEQUAL . Relation 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Relation	goto 76
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 57:
+
+	Equality : Relation EQUALEQUAL . Relation 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Relation	goto 77
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 58:
+
+	Conjunction : Conjunction ANDAND . Equality 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Equality	goto 78
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 59:
+
+	Expression : Expression EITHEROR . Conjunction 
+
+	LPAREN	shift 42
+	MINUS	shift 41
+	IntLit	shift 40
+	TRUE	shift 39
+	FALSE	shift 38
+	Identifier	shift 37
+	FACTORIAL	shift 36
+
+	Conjunction	goto 79
+	Equality	goto 33
+	Relation	goto 32
+	Addition	goto 31
+	Term	goto 30
+	Factor	goto 29
+	Primary	goto 28
+	Literal	goto 27
+
+	.	error
+
+
+state 60:
+
+	WhileStatement : WHILE LPAREN Expression RPAREN . Statement 
+
+	Identifier	shift 17
+	SEMICOLON	shift 16
+	LBRACE	shift 15
+	IF	shift 14
+	WHILE	shift 13
+	INT_KW	shift 12
+	BOOL_KW	shift 11
+
+	Statement	goto 80
+	BlockStatement	goto 8
+	AssignmentStatement	goto 7
+	IfStatement	goto 6
+	IfElseStatement	goto 5
+	WhileStatement	goto 4
+	DeclarationStatement	goto 3
+	DeclarationAssignment	goto 2
+	Type	goto 1
+
+	.	error
+
+
+state 61:
+
+	Factor : FACTORIAL Factor .  (reduce by rule 40)
+
+	RPAREN	reduce by rule 40
+	PLUS	reduce by rule 40
+	MINUS	reduce by rule 40
+	TIMES	reduce by rule 40
+	DIVIDE	reduce by rule 40
+	MOD	reduce by rule 40
+	LESSTHAN	reduce by rule 40
+	SEMICOLON	reduce by rule 40
+	MORETHAN	reduce by rule 40
+	ANDAND	reduce by rule 40
+	EITHEROR	reduce by rule 40
+	EQUALEQUAL	reduce by rule 40
+	NOTEQUAL	reduce by rule 40
+	LESSEQUAL	reduce by rule 40
+	GREATEQUAL	reduce by rule 40
+
+
+	.	error
+
+
+state 62:
+
+	Factor : MINUS Factor .  (reduce by rule 39)
+
+	RPAREN	reduce by rule 39
+	PLUS	reduce by rule 39
+	MINUS	reduce by rule 39
+	TIMES	reduce by rule 39
+	DIVIDE	reduce by rule 39
+	MOD	reduce by rule 39
+	LESSTHAN	reduce by rule 39
+	SEMICOLON	reduce by rule 39
+	MORETHAN	reduce by rule 39
+	ANDAND	reduce by rule 39
+	EITHEROR	reduce by rule 39
+	EQUALEQUAL	reduce by rule 39
+	NOTEQUAL	reduce by rule 39
+	LESSEQUAL	reduce by rule 39
+	GREATEQUAL	reduce by rule 39
+
+
+	.	error
+
+
+state 63:
+
+	Expression : Expression . EITHEROR Conjunction 
+	Primary : LPAREN Expression . RPAREN 
+
+	RPAREN	shift 81
+	EITHEROR	shift 59
+
+
+	.	error
+
+
+state 64:
+
+	IfStatement : IF LPAREN Expression RPAREN . Statement 
+	IfElseStatement : IF LPAREN Expression RPAREN . Statement ELSE Statement 
+
+	Identifier	shift 17
+	SEMICOLON	shift 16
+	LBRACE	shift 15
+	IF	shift 14
+	WHILE	shift 13
+	INT_KW	shift 12
+	BOOL_KW	shift 11
+
+	Statement	goto 82
+	BlockStatement	goto 8
+	AssignmentStatement	goto 7
+	IfStatement	goto 6
+	IfElseStatement	goto 5
+	WhileStatement	goto 4
+	DeclarationStatement	goto 3
+	DeclarationAssignment	goto 2
+	Type	goto 1
+
+	.	error
+
+
+state 65:
+
+	AssignmentStatement : Identifier SETEQ Expression SEMICOLON .  (reduce by rule 12)
+
+	EOF	reduce by rule 12
+	Identifier	reduce by rule 12
+	SEMICOLON	reduce by rule 12
+	LBRACE	reduce by rule 12
+	RBRACE	reduce by rule 12
+	IF	reduce by rule 12
+	ELSE	reduce by rule 12
+	WHILE	reduce by rule 12
+	INT_KW	reduce by rule 12
+	BOOL_KW	reduce by rule 12
+
+
+	.	error
+
+
+state 66:
+
+	DeclarationAssignment : Type Identifier SETEQ Expression SEMICOLON .  (reduce by rule 17)
+
+	EOF	reduce by rule 17
+	Identifier	reduce by rule 17
+	SEMICOLON	reduce by rule 17
+	LBRACE	reduce by rule 17
+	RBRACE	reduce by rule 17
+	IF	reduce by rule 17
+	ELSE	reduce by rule 17
+	WHILE	reduce by rule 17
+	INT_KW	reduce by rule 17
+	BOOL_KW	reduce by rule 17
+
+
+	.	error
+
+
+state 67:
+
+	Term : Term MOD Factor .  (reduce by rule 37)
+
+	RPAREN	reduce by rule 37
+	PLUS	reduce by rule 37
+	MINUS	reduce by rule 37
+	TIMES	reduce by rule 37
+	DIVIDE	reduce by rule 37
+	MOD	reduce by rule 37
+	LESSTHAN	reduce by rule 37
+	SEMICOLON	reduce by rule 37
+	MORETHAN	reduce by rule 37
+	ANDAND	reduce by rule 37
+	EITHEROR	reduce by rule 37
+	EQUALEQUAL	reduce by rule 37
+	NOTEQUAL	reduce by rule 37
+	LESSEQUAL	reduce by rule 37
+	GREATEQUAL	reduce by rule 37
+
+
+	.	error
+
+
+state 68:
+
+	Term : Term DIVIDE Factor .  (reduce by rule 36)
+
+	RPAREN	reduce by rule 36
+	PLUS	reduce by rule 36
+	MINUS	reduce by rule 36
+	TIMES	reduce by rule 36
+	DIVIDE	reduce by rule 36
+	MOD	reduce by rule 36
+	LESSTHAN	reduce by rule 36
+	SEMICOLON	reduce by rule 36
+	MORETHAN	reduce by rule 36
+	ANDAND	reduce by rule 36
+	EITHEROR	reduce by rule 36
+	EQUALEQUAL	reduce by rule 36
+	NOTEQUAL	reduce by rule 36
+	LESSEQUAL	reduce by rule 36
+	GREATEQUAL	reduce by rule 36
+
+
+	.	error
+
+
+state 69:
+
+	Term : Term TIMES Factor .  (reduce by rule 35)
+
+	RPAREN	reduce by rule 35
+	PLUS	reduce by rule 35
+	MINUS	reduce by rule 35
+	TIMES	reduce by rule 35
+	DIVIDE	reduce by rule 35
+	MOD	reduce by rule 35
+	LESSTHAN	reduce by rule 35
+	SEMICOLON	reduce by rule 35
+	MORETHAN	reduce by rule 35
+	ANDAND	reduce by rule 35
+	EITHEROR	reduce by rule 35
+	EQUALEQUAL	reduce by rule 35
+	NOTEQUAL	reduce by rule 35
+	LESSEQUAL	reduce by rule 35
+	GREATEQUAL	reduce by rule 35
+
+
+	.	error
+
+
+state 70:
+
+	Relation : Addition GREATEQUAL Addition .  (reduce by rule 30)
+	Addition : Addition . MINUS Term 
+	Addition : Addition . PLUS Term 
+
+	RPAREN	reduce by rule 30
+	PLUS	shift 55
+	MINUS	shift 54
+	SEMICOLON	reduce by rule 30
+	ANDAND	reduce by rule 30
+	EITHEROR	reduce by rule 30
+	EQUALEQUAL	reduce by rule 30
+	NOTEQUAL	reduce by rule 30
+
+
+	.	error
+
+
+state 71:
+
+	Relation : Addition LESSEQUAL Addition .  (reduce by rule 28)
+	Addition : Addition . MINUS Term 
+	Addition : Addition . PLUS Term 
+
+	RPAREN	reduce by rule 28
+	PLUS	shift 55
+	MINUS	shift 54
+	SEMICOLON	reduce by rule 28
+	ANDAND	reduce by rule 28
+	EITHEROR	reduce by rule 28
+	EQUALEQUAL	reduce by rule 28
+	NOTEQUAL	reduce by rule 28
+
+
+	.	error
+
+
+state 72:
+
+	Relation : Addition MORETHAN Addition .  (reduce by rule 29)
+	Addition : Addition . MINUS Term 
+	Addition : Addition . PLUS Term 
+
+	RPAREN	reduce by rule 29
+	PLUS	shift 55
+	MINUS	shift 54
+	SEMICOLON	reduce by rule 29
+	ANDAND	reduce by rule 29
+	EITHEROR	reduce by rule 29
+	EQUALEQUAL	reduce by rule 29
+	NOTEQUAL	reduce by rule 29
+
+
+	.	error
+
+
+state 73:
+
+	Relation : Addition LESSTHAN Addition .  (reduce by rule 27)
+	Addition : Addition . MINUS Term 
+	Addition : Addition . PLUS Term 
+
+	RPAREN	reduce by rule 27
+	PLUS	shift 55
+	MINUS	shift 54
+	SEMICOLON	reduce by rule 27
+	ANDAND	reduce by rule 27
+	EITHEROR	reduce by rule 27
+	EQUALEQUAL	reduce by rule 27
+	NOTEQUAL	reduce by rule 27
+
+
+	.	error
+
+
+state 74:
+
+	Addition : Addition MINUS Term .  (reduce by rule 32)
+	Term : Term . TIMES Factor 
+	Term : Term . DIVIDE Factor 
+	Term : Term . MOD Factor 
+
+	RPAREN	reduce by rule 32
+	PLUS	reduce by rule 32
+	MINUS	reduce by rule 32
+	TIMES	shift 49
+	DIVIDE	shift 48
+	MOD	shift 47
+	LESSTHAN	reduce by rule 32
+	SEMICOLON	reduce by rule 32
+	MORETHAN	reduce by rule 32
+	ANDAND	reduce by rule 32
+	EITHEROR	reduce by rule 32
+	EQUALEQUAL	reduce by rule 32
+	NOTEQUAL	reduce by rule 32
+	LESSEQUAL	reduce by rule 32
+	GREATEQUAL	reduce by rule 32
+
+
+	.	error
+
+
+state 75:
+
+	Addition : Addition PLUS Term .  (reduce by rule 33)
+	Term : Term . TIMES Factor 
+	Term : Term . DIVIDE Factor 
+	Term : Term . MOD Factor 
+
+	RPAREN	reduce by rule 33
+	PLUS	reduce by rule 33
+	MINUS	reduce by rule 33
+	TIMES	shift 49
+	DIVIDE	shift 48
+	MOD	shift 47
+	LESSTHAN	reduce by rule 33
+	SEMICOLON	reduce by rule 33
+	MORETHAN	reduce by rule 33
+	ANDAND	reduce by rule 33
+	EITHEROR	reduce by rule 33
+	EQUALEQUAL	reduce by rule 33
+	NOTEQUAL	reduce by rule 33
+	LESSEQUAL	reduce by rule 33
+	GREATEQUAL	reduce by rule 33
+
+
+	.	error
+
+
+state 76:
+
+	Equality : Relation NOTEQUAL Relation .  (reduce by rule 25)
+
+	RPAREN	reduce by rule 25
+	SEMICOLON	reduce by rule 25
+	ANDAND	reduce by rule 25
+	EITHEROR	reduce by rule 25
+
+
+	.	error
+
+
+state 77:
+
+	Equality : Relation EQUALEQUAL Relation .  (reduce by rule 24)
+
+	RPAREN	reduce by rule 24
+	SEMICOLON	reduce by rule 24
+	ANDAND	reduce by rule 24
+	EITHEROR	reduce by rule 24
+
+
+	.	error
+
+
+state 78:
+
+	Conjunction : Conjunction ANDAND Equality .  (reduce by rule 22)
+
+	RPAREN	reduce by rule 22
+	SEMICOLON	reduce by rule 22
+	ANDAND	reduce by rule 22
+	EITHEROR	reduce by rule 22
+
+
+	.	error
+
+
+state 79:
+
+	Expression : Expression EITHEROR Conjunction .  (reduce by rule 20)
+	Conjunction : Conjunction . ANDAND Equality 
+
+	RPAREN	reduce by rule 20
+	SEMICOLON	reduce by rule 20
+	ANDAND	shift 58
+	EITHEROR	reduce by rule 20
+
+
+	.	error
+
+
+state 80:
+
+	WhileStatement : WHILE LPAREN Expression RPAREN Statement .  (reduce by rule 15)
+
+	EOF	reduce by rule 15
+	Identifier	reduce by rule 15
+	SEMICOLON	reduce by rule 15
+	LBRACE	reduce by rule 15
+	RBRACE	reduce by rule 15
+	IF	reduce by rule 15
+	ELSE	reduce by rule 15
+	WHILE	reduce by rule 15
+	INT_KW	reduce by rule 15
+	BOOL_KW	reduce by rule 15
+
+
+	.	error
+
+
+state 81:
+
+	Primary : LPAREN Expression RPAREN .  (reduce by rule 44)
+
+	RPAREN	reduce by rule 44
+	PLUS	reduce by rule 44
+	MINUS	reduce by rule 44
+	TIMES	reduce by rule 44
+	DIVIDE	reduce by rule 44
+	MOD	reduce by rule 44
+	LESSTHAN	reduce by rule 44
+	SEMICOLON	reduce by rule 44
+	MORETHAN	reduce by rule 44
+	ANDAND	reduce by rule 44
+	EITHEROR	reduce by rule 44
+	EQUALEQUAL	reduce by rule 44
+	NOTEQUAL	reduce by rule 44
+	LESSEQUAL	reduce by rule 44
+	GREATEQUAL	reduce by rule 44
+
+
+	.	error
+
+error:  state 82: shift/reduce conflict (shift ELSE, reduce by rule 13)
+
+state 82:
+
+	IfStatement : IF LPAREN Expression RPAREN Statement .  (reduce by rule 13)
+	IfElseStatement : IF LPAREN Expression RPAREN Statement . ELSE Statement 
+
+	EOF	reduce by rule 13
+	Identifier	reduce by rule 13
+	SEMICOLON	reduce by rule 13
+	LBRACE	reduce by rule 13
+	RBRACE	reduce by rule 13
+	IF	reduce by rule 13
+	ELSE	shift 83
+	WHILE	reduce by rule 13
+	INT_KW	reduce by rule 13
+	BOOL_KW	reduce by rule 13
+
+
+	.	error
+
+
+state 83:
+
+	IfElseStatement : IF LPAREN Expression RPAREN Statement ELSE . Statement 
+
+	Identifier	shift 17
+	SEMICOLON	shift 16
+	LBRACE	shift 15
+	IF	shift 14
+	WHILE	shift 13
+	INT_KW	shift 12
+	BOOL_KW	shift 11
+
+	Statement	goto 84
+	BlockStatement	goto 8
+	AssignmentStatement	goto 7
+	IfStatement	goto 6
+	IfElseStatement	goto 5
+	WhileStatement	goto 4
+	DeclarationStatement	goto 3
+	DeclarationAssignment	goto 2
+	Type	goto 1
+
+	.	error
+
+
+state 84:
+
+	IfElseStatement : IF LPAREN Expression RPAREN Statement ELSE Statement .  (reduce by rule 14)
+
+	EOF	reduce by rule 14
+	Identifier	reduce by rule 14
+	SEMICOLON	reduce by rule 14
+	LBRACE	reduce by rule 14
+	RBRACE	reduce by rule 14
+	IF	reduce by rule 14
+	ELSE	reduce by rule 14
+	WHILE	reduce by rule 14
+	INT_KW	reduce by rule 14
+	BOOL_KW	reduce by rule 14
+
+
+	.	error
+
+
+state 85:
+
+
+	EOF	accept
+
+
+	.	error
+
+511 of 758 action table entries left after compaction
+173 goto table entries

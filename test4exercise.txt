@@ -1,0 +1,5 @@
+int myVar;
+myVar = 99;
+int x;
+x = -1;
+myVar = myVar * x;

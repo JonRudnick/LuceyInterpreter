@@ -1,0 +1,2 @@
+Skeleton 5
+ae"LuceyInterpretLexFun"i2aä¢Tokens"gp1c"LuceyInterpret_TOKENS"f4d"Char"ä¢TextIO"ÿä¢Vector"h3aä¢yyInput"jh3aä¢TIO"gp1ÿad"TSIO"gp2ÿ-d"StreamIO"ad"TPIO"gp1d"TextPrimIO"è0aä¢UserDeclarations"ÿ‚*bbd2egp1ÿ‚-f8d"IO"d"Int"d"List"Cd"Option"ÿÿ‚-ÿÿNf0f1ÿ

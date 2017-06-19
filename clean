@@ -1,0 +1,5 @@
+rm Lucey.grm.desc
+rm Lucey.grm.sig
+rm Lucey.grm.sml
+rm Lucey.lex.sml
+rm LuceyInterpretImage*

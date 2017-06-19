@@ -1,0 +1,2 @@
+Skeleton 5
+ad"LuceyInterpret"h5Cegp1d"AST"f4d"OS"d"Int"d"Option"d"TextIO"aä¢LuceyInterpretLrVals"jh1aä¢Token"gp2ä¢LrParser"ÿgp1e"LuceyInterpretLrValsFun"aä¢LuceyInterpretLex"jh1aä¢Tokens"gp2ÿ?ÿ‚)gp1e"LuceyInterpretLexFun"ad"LuceyInterpretParser"jh3aä¢ParserData"gp2ÿ?ÿƒ0ad"Lex"gp1ÿ‚aÿ%gp1ÿ%gp1e"Join"N

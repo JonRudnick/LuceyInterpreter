@@ -1,0 +1,2 @@
+Skeleton 5
+ad"ExprInterpret"h5Cegp1d"AST"f4d"OS"d"Int"d"Option"d"TextIO"aä¢ExprInterpretLrVals"jh1aä¢Token"gp2ä¢LrParser"ÿgp1e"ExprInterpretLrValsFun"aä¢ExprInterpretLex"jh1aä¢Tokens"gp2ÿ>ÿ‚%gp1e"ExprInterpretLexFun"ad"ExprInterpretParser"jh3aä¢ParserData"gp2ÿ>ÿƒ*ad"Lex"gp1ÿ‚aÿ#gp1ÿ#gp1e"Join"N
